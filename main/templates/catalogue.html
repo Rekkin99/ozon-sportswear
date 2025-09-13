@@ -1,0 +1,44 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+<h1>Catalogue</h1>
+
+<hr>
+
+<a href="{% url 'main:show_main' %}">
+  <button>Back to Main</button>
+</a>
+
+<br><br>
+
+<a href="{% url 'main:add_product' %}">
+  <button>+ Add Product</button>
+</a>
+
+<hr>
+
+{% if not product_list %}
+<p>There is no available product yet.</p>
+{% else %}
+
+{% for product in product_list %}
+<div>
+  <h2><a href="{% url 'main:show_product' product.id %}">{{ product.name }}</a></h2>
+
+  <p><b>{{ product.get_category_display }}</b>{% if product.is_featured %} | 
+    <b>Featured</b>{% endif %}
+
+  {% if product.thumbnail %}
+  <img src="{{ product.thumbnail }}" alt="thumbnail" width="200" height="200">
+  <br />
+  {% endif %}
+
+  <p><a href="{% url 'main:show_product' product.id %}"><button>Detail</button></a></p>
+</div>
+
+<hr>
+{% endfor %}
+
+{% endif %}
+
+{% endblock %}

@@ -3,15 +3,12 @@ from main.forms import Catalogue
 from main.models import Product
 
 # Create your views here.
-def show_main(request):
-    # Return All Product Objects in Database
-    product_list = Product.objects.all()
+def show_main(request): 
 
     context = {
         'app' : 'Ozon Sportswear',
         'name': 'Farrell Bagoes Rahmantyo',
         'npm' : '2406420596',
-        'product_list' : product_list 
     }
 
     return render(request, "main.html", context)
@@ -36,3 +33,13 @@ def show_product(request, id):
     }
 
     return render(request, "product_detail.html", context)
+
+def show_catalogue(request):
+    # Return All Product Objects in Database
+    product_list = Product.objects.all()
+
+    context = {
+        'product_list' : product_list 
+    }
+
+    return render(request, "catalogue.html", context)

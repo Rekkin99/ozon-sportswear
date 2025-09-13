@@ -9,34 +9,9 @@
 <h3>NPM: </h3>
 <p>{{ npm }}</p> 
 
-<a href="{% url 'main:add_product' %}">
-  <button>+ Add Product</button>
+<hr>
+<a href="{% url 'main:show_catalogue' %}">
+  <button>Catalogue</button>
 </a>
-
-<hr>
-
-{% if not product_list %}
-<p>There is no available product yet.</p>
-{% else %}
-
-{% for product in product_list %}
-<div>
-  <h2><a href="{% url 'main:show_product' product.id %}">{{ product.name }}</a></h2>
-
-  <p><b>{{ product.get_category_display }}</b>{% if product.is_featured %} | 
-    <b>Featured</b>{% endif %}
-
-  {% if product.thumbnail %}
-  <img src="{{ product.thumbnail }}" alt="thumbnail" width="300" height="300">
-  <br />
-  {% endif %}
-
-  <p><a href="{% url 'main:show_product' product.id %}"><button>Detail</button></a></p>
-</div>
-
-<hr>
-{% endfor %}
-
-{% endif %}
 
  {% endblock content %}
