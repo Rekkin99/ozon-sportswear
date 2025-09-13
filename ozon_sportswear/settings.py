@@ -33,7 +33,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "farrell-bagoes-ozonsportswear.pbp.cs.ui.ac.id"]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://farrell-bagoes-ozonsportswear.pbp.cs.ui.ac.id/",
+    "https://farrell-bagoes-ozonsportswear.pbp.cs.ui.ac.id",
 ]
 
 
