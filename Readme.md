@@ -81,4 +81,46 @@ online juga tetap stanby 2 jam. So Thanks All!
 
 /// TUGAS 3 ///
 
+1. Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?
+Data delivery berguna bagi aplikasi untuk dapat mengakses, mentransfer dan melihat 
+data-data dari database
+
+2. Menurutmu, mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML?
+Tentu sulit untuk menentukan mana yang lebih baik diantara XML atau JSON tanpa alat ukur yang adil.
+Menurut saya, JSON lebih baik untuk pemula karena lebih mudah dan enak dibaca saja.
+Berdasarkan artikel https://medium.com/@gopi_ck/7082f8c2edec,
+JSON lebih popular selain karena mudah dibaca juga, JSON lebih ringan dan cepat. Selain itu juga, JSON
+terdapat built-in support pada beberapa bahasa pemrograman, terlebih lagi terdapat sinergi dengan javascript
+
+3. Jelaskan fungsi dari method is_valid() pada form Django dan mengapa kita membutuhkan method tersebut?
+is_valid() berfungsi untuk mengecek validitas dari data-data yang telah diisi di form.
+is_valid() dibutuhkan untuk mencegah kesalahan pengisian data oleh user.
+
+4. Mengapa kita membutuhkan csrf_token saat membuat form di Django? Apa yang dapat terjadi jika kita tidak menambahkan csrf_token pada form Django? Bagaimana hal tersebut dapat dimanfaatkan oleh penyerang?
+csrf_token berguna untuk mengecek apakah suatu laman diakses melalui url yang dipercaya yang telah 
+ditentukan di setting.py . Jika diakses dari tempat tidak terpercaya akan mengembalikkan error
+403 forbidden.
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+Pertama kita bikin sebuah form untuk dapat menambah data-data produk ke database, kita bikin forms.py
+bikin sebuah class untuk menambah pbjek Product yang dimana kita dapat masukkan atribut-atributnya, kecuali
+id-nya. Lalu kita bikin alur requestnya di views.py dan kita routing urlnya
+
+Kedua, membuat halaman untuk menampilkan semua produk dan juga detailnya serta page untuk menambah produk.
+kita bikin alur requestnya di views.py setelah itu kita routing urlnya, karena ini page baru. Kita
+buat juga template baru untuk menyesuaikan, kita buat template menyesuaikan dengan data-data dari model dan
+juga menggunakan base template yang di sebelumnya kita buat. Untuk page add product, untuk menjaga keamanan
+kita memakai csrf_token dan mengatur sumber mana saja yang dipercaya di settings.py 
+
+Ketiga, untuk dapat melihat data kita dapat menyajikan dalam bentuk xml/json
+untuk keduanya kita bikin function baru di views.py dan juga mengimpor httpresponse dan serializers
+untuk memudahkan memformatnya. Selain itu kita membuat fungsi untuk mengembalikan data dengan id tertentu
+Jika id tidak exist, kembalikkan error 404. Setelah itu kita routing url seperti biasa
+
+6. Feedback Asdos
+Asdos membantu saya untuk mencari kesalahan pada proyek django saya dan stanby di discord. Overall 5/5.
+
+7. Postman
+https://drive.google.com/drive/folders/1sS8bCrdpCjzb5oNVLXOKkPMfb_vOYkFe?usp=sharing
+
 /// END TUGAS 3 ///

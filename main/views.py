@@ -27,8 +27,7 @@ def add_product(request):
 
 def show_product(request, id):
     product = get_object_or_404(Product, pk=id)
-    
-
+        
     context = {
         'product': product,
         'price' : "Rp. {:,}".format(product.price)
