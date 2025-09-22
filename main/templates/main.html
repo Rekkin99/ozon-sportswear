@@ -9,9 +9,15 @@
 <h3>NPM: </h3>
 <p>{{ npm }}</p> 
 
+<h5>Sesi terakhir login: {{ last_login }}</h5>
+
 <hr>
 <a href="{% url 'main:show_catalogue' %}">
   <button>Catalogue</button>
 </a>
 
+<a href="{% url 'main:logout' %}">
+  <button>Logout</button>
+</a>
+   
  {% endblock content %}
