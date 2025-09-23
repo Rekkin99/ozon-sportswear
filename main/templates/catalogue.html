@@ -31,14 +31,15 @@
 {% for product in product_list %}
 <div>
   <h2><a href="{% url 'main:show_product' product.id %}">{{ product.name }}</a></h2>
-
-  <p><b>{{ product.get_category_display }}</b>{% if product.is_featured %} | 
-    <b>Featured</b>{% endif %}
-
+  
   {% if product.thumbnail %}
   <img src="{{ product.thumbnail }}" alt="thumbnail" width="200" height="200">
   <br />
   {% endif %}
+  
+  <p><b>{{ product.get_category_display }}</b>{% if product.is_featured %} | 
+    <b>Featured</b>{% endif %}
+
 
   <p><a href="{% url 'main:show_product' product.id %}"><button>Detail</button></a></p>
 </div>

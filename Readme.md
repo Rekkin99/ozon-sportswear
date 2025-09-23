@@ -127,19 +127,77 @@ https://drive.google.com/drive/folders/1sS8bCrdpCjzb5oNVLXOKkPMfb_vOYkFe?usp=sha
 
 /// TUDAS 4 ///
 1. Apa itu Django AuthenticationForm? Jelaskan juga kelebihan dan kekurangannya.
+Django AuthenticationForm secara sederhana sebuah class yang menyediakan form untuk user login.
+Jadi kita tidak perlu membuat class form yang baru di forms.py
 
+Kelebihan :
+Praktis dan Mudah diimplementasi
+Keamanan Terjamin
+Mudah dikustomisasi
+
+Kekurangan:
+Cukup kompleks untuk dipahami
+Tidak dapat diimplementasi di luar project Django
+
+Ref : https://medium.com/@alex-azimbaev/a-guide-to-popular-authentication-systems-for-websites-django-firebase-auth-and-more-9e25ba78b3dd
 
 2. Apa perbedaan antara autentikasi dan otorisasi? Bagaiamana Django mengimplementasikan kedua konsep tersebut?
-
+Autentikasi itu untuk memverifikasi siapa (user mana) yang menggunakan aplikasi
+Otorisasi itu memverifikasi hak akses apa saja yang dimiliki suatu user
+Implementasinya dalam Django itu digabung menjadi satu kesatuan authentication system. 
+https://docs.djangoproject.com/en/4.2/topics/auth
 
 3. Apa saja kelebihan dan kekurangan session dan cookies dalam konteks menyimpan state di aplikasi web?
+Session Storage
+Kelebihan :
+Temporary Storage (Akan dihapus saat session berakhir)
+Lebih aman untuk short-term data dibandingkan local storage
+Kekurangan :
+Tidak dapat bertahan dalam berbagai session browser
+Rentan terhadap serangan XSS
 
+Cookies
+Kelebihan :
+Mudah diimplementasi
+Dapat bertahan dalam berbagai session browser
+Kekurangan :
+Mudah dieksploitasi jika tidak ditangani dengan baik
+Storage Terbatas
+
+Ref : https://dev.to/keshav___dev/frontend-session-management-from-cookies-to-jwts-3pb4
+https://medium.com/@jananga1999/the-role-of-cookies-in-web-development-24775748b63e
 
 4. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai? Bagaimana Django menangani hal tersebut?
-
+Selama kita konfigurasi dengan baik, kita dapat menghindari risiko keamanan.
+Dalam Django untuk mencegah cookies bocor, kita dapat menkonfigurasi
+SESSION_COOKIE_SECURE dan CSRF_COOKIE_SECURE settings menjadi True.
+Ref : https://docs.djangoproject.com/en/5.2/topics/security/
 
 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 
+Pertama, Kita membuat fitur login, register dan logout
+Untuk fitur login dan register kita dapat menggunakan method dari class yang disediakan Django
+yakni UserCreationForm dan AuthenticationForm agar mudah mengimplementasi form-nya.
+Selain itu juga fitur login kita gunakan fitur bawaan dari Django
+Lalu kita membuat laman untuk login/register dan menghubungkan urlnya. Selain itu, kita
+membuat laman utama/katalog/produk/addProduk untuk tidak dapat diakses sebelum aplikasi
+memverifikasi user dengan menggunakan wrapper dari function yang kita import login_required
+Saat login juga kita set cookies kapan terakhir kali pengguna login untuk menyimpan session pengguna
+Untuk fitur logout, kita gunakan fitur bawaan juga dari Django untuk melepas user dari session terakhir.
+Selain itu juga, saat logout kita buat agar cookies last_login dihapus
 
+Kedua, menghubungkan product dengan user
+Di models kita tambahkan foreignkey pada models kita untuk menandakan bahwa suatu produk memiliki
+hubungan pada suatu object lalu kita hubungkan dengan User yang membuat product tersebut.
+Kita buat juga product tidak dapat dibuat jika terdapat user yang aktif, namun untuk product yang dibuat sebelum tugas 4 itu kita buat agar tidak terhapus dengan null=True
+Lalu tinggal kita lakukan migrasi Model karena terdapat perubahan pada model kita
+
+Ketiga, kita lakukan perubahan dibeberapa berkas html.
+Tampilkan last login di halaman utama
+tambah filter produk user dan all di catalogue
+tampilkan product ini milik siapa di detail_product.
+
+Terakhir kita jalankan aplikasi di lokal.
+Lalu saya buat 2 akun dan masing-masing akun melakukan 3 kali add product
 
 /// END TUGAS 4 ///
