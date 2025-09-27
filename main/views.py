@@ -13,10 +13,9 @@ from django.urls import reverse
 # Create your views here.
 @login_required(login_url='/login')
 def show_main(request): 
-
     context = {
         'app' : 'Ozon Sportswear',
-        'name': 'Farrell Bagoes Rahmantyo',
+        'name': request.user,
         'npm' : '2406420596',
         'last_login': request.COOKIES.get('last_login', 'Never'),
     }
@@ -66,11 +65,12 @@ def add_product(request):
         product_entry = form.save(commit=False)
         product_entry.user = request.user
         product_entry.save()
-        return redirect('main:show_main')
+        return redirect('main:show_catalogue')
 
     context = {'form': form}
     return render(request, "add_product.html", context)
 
+# Product Detail
 @login_required(login_url='/login')
 def show_product(request, id):
     product = get_object_or_404(Product, pk=id)
@@ -82,6 +82,22 @@ def show_product(request, id):
 
     return render(request, "product_detail.html", context)
 
+# Edit Product
+@login_required(login_url='/login')
+def edit_product(request, id):
+    product = get_object_or_404(Product, pk=id)
+    form = Catalogue(request.POST or None, instance=product)
+    if form.is_valid() and request.method == 'POST':
+        form.save()
+        return redirect('main:show_catalogue')
+
+    context = {
+        'form': form
+    }
+
+    return render(request, "edit_product.html", context)
+
+# Show Catalogue
 @login_required(login_url='/login')
 def show_catalogue(request):
     filter_type = request.GET.get("filter", "all")  # default 'all'
@@ -97,6 +113,12 @@ def show_catalogue(request):
     }
 
     return render(request, "catalogue.html", context)
+
+# Delete Product
+def delete_product(request, id):
+    product = get_object_or_404(Product, pk=id)
+    product.delete()
+    return HttpResponseRedirect(reverse('main:show_catalogue'))
 
 def show_xml(request):
     product_list =Product.objects.all()

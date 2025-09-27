@@ -25,4 +25,3 @@ class Product(models.Model):
     # Return Products Name
     def __str__(self):
         return self.name
-    
