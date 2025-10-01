@@ -204,13 +204,40 @@ Lalu saya buat 2 akun dan masing-masing akun melakukan 3 kali add product
 
 /// TUGAS 5 ///
  Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
-
+ Terdapat 3 jenis css selector, yakni inline-style, internal style sheet, dan external style sheet
+ Priority penentuannya yakni inline > internal > external
 
  Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design, serta jelaskan mengapa!
+ Responsive design itu menyesuaikan tampilan web tergantung display perangkat masing-masing
+ Responsive design itu penting dalam memberi UX yang baik bagi pengguna aplikasi
+ Contoh Aplikasi dengan responsive design itu Youtube, pada mobile banyaknya video yang ditampilkan di grid hanya 1
+ dibanding di komputer yang bisa 3-4 tergantung layar, selain itu sidebar youtube diganti menjadi button menu di mobile
+ Contoh Aplikasi yg tidak responsive adalah tugas ini dalam fase tugas-2 karena hanya berupa html dan tidak terdapat css yang dapat membantu membuat desain responsive
 
  Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+ Basically anggap terdapat elemen-elemen yang terbungkus dalam box-nya masing-masing
+ margin berguna untuk mendefinisikan jarak antar 'box' elemen satu dengan elemen lainnya
+ border sebagai pembatas tepian box elemen
+ padding itu anggap sebagai jarak isi elemen ke tepian box
+ implementasinya dalam css kita menggunakan class dimana kita bisa atur margin,border,padding untuk masing-masing kontainer <div>
 
  Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+ flex box itu memudahkan kita menata kontainer dalam satu baris atau kolom
+ sementara grid layout itu mirip namun lebih presisi serta dapat 2 arah (baris dan kolom)
+ kegunaan flexbox seperti membuat navbar, sidebar, button menu
+ kegunaan grid layout seperti untuk membuat galeri atau list produk seperti pada online shop
 
  Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
  
+ Pertama Kita tambah fitur baru untuk mengedit dan mendelete product kita
+ seperti biasa logikanya kita buat di views.py lalu kita hubungkan dengan html kita dan juga urlnya
+
+ Lalu Kita buat navbar dan juga membuat responsicve design agar dapat mudah diakses di mobile dengan menambahkan
+ menu button,
+ Selain itu kita buat semacam card product untuk membuat penampilan produk kita seperti di toko online seperti biasanya
+
+ Selain itu kita buat folder static untuk menyimpan external style, gambar, fonts yang ingin kita gunakan di app kita hubungkan di settings agar file static dapat diakses.
+
+ kita ambil modul scripts tailwind melalui link dan juga hubungkan external style sheet kita ke base html
+ Lalu kita mengkustomisasi desain web kita dengan senang hati.
+ Saya mengincar kombinasi warna indigo dan abu gelap sebagai warna dasar
