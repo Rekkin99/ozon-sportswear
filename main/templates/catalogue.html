@@ -1,65 +1,59 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Ozon Catalogue</title>
+{% endblock meta %}
+
 {% block content %}
+{% include 'navbar.html' %}
+<div class="bg-gray-800 w-full pt-16 min-h-screen">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-<h1>Catalogue</h1>
+    <!-- Header Section -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-indigo-400 mb-2">Exclusive Quality Product</h1>
+      <p class="text-indigo-100">The Future Awaits</p>
+    </div>
 
-<hr>
+    <!-- Filter Section -->
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 bg-indigo-400 rounded-lg border border-gray-800 p-4">
+      <div class="flex space-x-3 mb-4 sm:mb-0">
+        <a href="?" class="{% if request.GET.filter == 'all' or not request.GET.filter  %} bg-indigo-100 text-indigo-400{% else %}bg-indigo-400 text-indigo-100 border border-gray-300{% endif %} px-4 py-2 rounded-xl font-medium transition-colors hover:bg-indigo-100 hover:text-indigo-400">
+          All Product
+        </a>
+        <a href="?filter=my" class="{% if request.GET.filter == 'my' %} bg-indigo-100 text-indigo-400{% else %}bg-indigo-400 text-indigo-100 border border-gray-300{% endif %} px-4 py-2 rounded-xl font-medium transition-colors hover:bg-indigo-100 hover:text-indigo-400">
+          My Product
+        </a>
+        <a href="?filter=featured" class="{% if request.GET.filter == 'featured' %} bg-indigo-100 text-indigo-400{% else %}bg-indigo-400 text-indigo-100 border border-gray-300{% endif %} px-4 py-2 rounded-xl font-medium transition-colors hover:bg-indigo-100 hover:text-indigo-400">
+          Featured
+        </a>
+      </div>
+      {% if user.is_authenticated %}
+        <div class="text-sm text-gray-500">
+          Last login: {{ last_login }}
+        </div>
+      {% endif %}
+    </div>
 
-<a href="{% url 'main:show_main' %}">
-  <button>Back to Main</button>
-</a>
-
-<br><br>
-
-<a href="{% url 'main:add_product' %}">
-  <button>+ Add Product</button>
-</a>
-
-<hr>
-
-<a href="?filter=all">
-    <button type="button">All Product</button>
-</a>
-<a href="?filter=my">
-    <button type="button">My Product</button>
-</a> 
-
-{% if not product_list %}
-<p>There is no available product yet.</p>
-{% else %}
-
-{% for product in product_list %}
-<div>
-  <h2><a href="{% url 'main:show_product' product.id %}">{{ product.name }}</a></h2>
-  
-  {% if product.thumbnail %}
-  <img src="{{ product.thumbnail }}" alt="thumbnail" width="200" height="200">
-  <br />
-  {% endif %}
-  
-  <p><b>{{ product.get_category_display }}</b>{% if product.is_featured %} | 
-    <b>Featured</b>{% endif %}</p>
-
-
-  <a href="{% url 'main:show_product' product.id %}"><button>Detail</button></a>
-  {% if user.is_authenticated and product.user == user %}
-    <a href="{% url 'main:edit_product' product.pk %}">
-        <button>
-            Edit
-        </button>
-    </a>
-    <a href="{% url 'main:delete_product' product.pk %}">
-        <button>
-            Delete
-        </button>
-    </a>
-
+    <!-- Product Grid -->
+    {% if not product_list %}
+      <div class="bg-indigo-400 rounded-lg border border-gray-800 p-12 text-center">
+        <div class="w-32 h-32 mx-auto mb-2">
+          <img src="{% static 'image/product.png' %}" alt="No product available" class="w-full h-full object-contain rounded-xl">
+        </div>
+        <h3 class="text-lg font-medium text-gray-900 mb-2">No product found</h3>
+        <a href="{% url 'main:add_product' %}" class="inline-flex items-center px-4 py-2 bg-indigo-100 text-gray-800 rounded-xl">
+          Create Product
+        </a>
+      </div>
+    {% else %}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for product in product_list %}
+          {% include 'product_card.html' with product=product %}
+        {% endfor %}
+      </div>
     {% endif %}
+  </div>
 </div>
-
-<hr>
-{% endfor %}
-
-{% endif %}
-
-{% endblock %}
+{% endblock content %}

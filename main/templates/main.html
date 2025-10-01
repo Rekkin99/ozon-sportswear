@@ -2,22 +2,6 @@
  {% block content %}
  {% include "navbar.html" %}
 
-<h3>App: </h3>
-<p>{{ app }}</p> 
-<h3>Name: </h3>
-<p>{{ name }}</p> 
-<h3>NPM: </h3>
-<p>{{ npm }}</p> 
-
-<h5>Sesi terakhir login: {{ last_login }}</h5>
-
-<hr>
-<a href="{% url 'main:show_catalogue' %}">
-  <button>Catalogue</button>
-</a>
-
-<a href="{% url 'main:logout' %}">
-  <button>Logout</button>
-</a>
+<div class="bg-gray-800 w-full pt-16 min-h-screen"></div>
    
  {% endblock content %}

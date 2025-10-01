@@ -11,7 +11,6 @@ import datetime
 from django.urls import reverse
 
 # Create your views here.
-@login_required(login_url='/login')
 def show_main(request): 
     context = {
         'app' : 'Ozon Sportswear',
@@ -53,7 +52,7 @@ def login_user(request):
 # Logout User
 def logout_user(request):
     logout(request)
-    response = HttpResponseRedirect(reverse('main:login'))
+    response = HttpResponseRedirect(reverse('main:show_main'))
     response.delete_cookie('last_login')
     return response
 
@@ -105,11 +104,14 @@ def show_catalogue(request):
     if filter_type == "all":
         # Return All Product Objects in Database
         product_list = Product.objects.all()
+    elif filter_type == "featured":
+        product_list = Product.objects.filter(is_featured=True)
     else:
         product_list = Product.objects.filter(user=request.user)
 
     context = {
-        'product_list' : product_list 
+        'product_list' : product_list,
+        'last_login': request.COOKIES.get('last_login', 'Never'),
     }
 
     return render(request, "catalogue.html", context)
