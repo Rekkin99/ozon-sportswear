@@ -241,3 +241,4 @@ Lalu saya buat 2 akun dan masing-masing akun melakukan 3 kali add product
  kita ambil modul scripts tailwind melalui link dan juga hubungkan external style sheet kita ke base html
  Lalu kita mengkustomisasi desain web kita dengan senang hati.
  Saya mengincar kombinasi warna indigo dan abu gelap sebagai warna dasar
+ 

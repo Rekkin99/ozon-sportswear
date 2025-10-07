@@ -1,23 +1,23 @@
 {% extends 'base.html' %}
 {% block meta %}
-<title>Edit Product - Ozon Sportswear</title>
+<title>Ozon Sportswear - Edit Product</title>
 {% endblock meta %}
 
 {% block content %}
-<div class="bg-gradient-to-b from-indigo-800 to-black w-full min-h-screen">
+<div class="from-[#FBF9D1] via-[#FBF9D1] to-[#9A3F3F] w-full pt-16 min-h-screen bg-gradient-to-b">
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     
     <!-- Back Navigation -->
-    <div class="mb-6">
-      <a href="{% url 'main:show_catalogue' %}" class="text-indigo-100 hover:text-indigo-200 font-medium transition-colors">
-        ← Back to Catalogue
-      </a>
-    </div>
+        <div class="mb-6">
+            <a href="{% url 'main:show_catalogue' %}" class="text-[#FBF9D1] hover:bg-[#9A3F3F] border border-[#9A3F3F] px-2 py-2 font-medium rounded-xl transition-colors bg-[#C1856D]">
+                ← Back to Catalogue
+            </a>
+        </div>
     
     <!-- Form -->
-    <div class="bg-indigo-100 rounded-xl border p-6 sm:p-8 form-style">
+    <div class="bg-[#E6CFA9] rounded-xl border border-[#9A3F3F] p-6 sm:p-8 form-style">
       <div class="mb-8">
-        <h1 class="text-2xl font-bold text-gray-900 mb-2">Edit Existing Product</h1>
+        <h1 class="text-2xl font-bold text-gray-900 mb-2">Edit Product</h1>
       </div>
       
       <form method="POST" class="space-y-6">
@@ -39,11 +39,11 @@
           </div>
         {% endfor %}
         
-        <div class="flex flex-col sm:flex-row gap-4 pt-6 border-t border-gray-200">
-          <a href="{% url 'main:show_catalogue' %}" class="order-2 sm:order-1 px-6 py-3 border border-indigo-100 bg-red-400 text-indigo-100 rounded-xl font-medium hover:bg-red-600 transition-colors text-center">
+        <div class="flex flex-col sm:flex-row gap-4 pt-6 border-t border-[#9A3F3F]">
+          <a href="{% url 'main:show_catalogue' %}" class="order-2 sm:order-1 px-6 py-3 border border-[#E6CFA9] bg-red-600 text-[#E6CFA9] rounded-xl font-medium hover:bg-red-800 transition-colors text-center">
             Cancel
           </a>
-          <button type="submit" class="order-1 sm:order-2 flex-1 bg-indigo-400 text-indigo-100 px-6 py-3 rounded-xl font-medium hover:bg-indigo-600 transition-colors">
+          <button type="submit" class="order-1 sm:order-2 flex-1 bg-green-600 text-[#E6CFA9] px-6 py-3 rounded-xl font-medium hover:bg-green-800 transition-colors">
             Edit Product
           </button>
         </div>

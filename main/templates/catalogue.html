@@ -2,35 +2,34 @@
 {% load static %}
 
 {% block meta %}
-<title>Ozon Catalogue</title>
+<title>Ozon Sportswear - Catalogue</title>
 {% endblock meta %}
 
 {% block content %}
 {% include 'navbar.html' %}
-<div class="bg-gray-800 w-full pt-16 min-h-screen">
+<div class="from-[#FBF9D1] via-[#FBF9D1] to-[#9A3F3F] w-full pt-16 min-h-screen bg-gradient-to-b">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
     <!-- Header Section -->
-    <div class="mb-8">
-      <h1 class="text-3xl font-bold text-indigo-400 mb-2">Exclusive Quality Product</h1>
-      <p class="text-indigo-100">The Future Awaits</p>
+    <div class="mb-8 mt-8">
+      <h1 class="text-3xl font-bold text-[#9A3F3F] flex justify-center">Exclusive Quality Product</h1>
     </div>
 
     <!-- Filter Section -->
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 bg-indigo-400 rounded-lg border border-gray-800 p-4">
-      <div class="flex space-x-3 mb-4 sm:mb-0">
-        <a href="?" class="{% if request.GET.filter == 'all' or not request.GET.filter  %} bg-indigo-100 text-indigo-400{% else %}bg-indigo-400 text-indigo-100 border border-gray-300{% endif %} px-4 py-2 rounded-xl font-medium transition-colors hover:bg-indigo-100 hover:text-indigo-400">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 bg-[#E6CFA9] rounded-xl border border-[#9A3F3F] p-4">
+      <div class="flex space-x-3 mb-4 sm:mb-0 text-[#FBF9D1]">
+        <a href="?" class="{% if request.GET.filter == 'all' or not request.GET.filter  %} bg-[#9A3F3F] {% else %}bg-[#C1856D] border border-[#9A3F3F]{% endif %} px-4 py-2 rounded-xl font-medium transition-colors hover:bg-[#9A3F3F] ">
           All Product
         </a>
-        <a href="?filter=my" class="{% if request.GET.filter == 'my' %} bg-indigo-100 text-indigo-400{% else %}bg-indigo-400 text-indigo-100 border border-gray-300{% endif %} px-4 py-2 rounded-xl font-medium transition-colors hover:bg-indigo-100 hover:text-indigo-400">
+        <a href="?filter=my" class="{% if request.GET.filter == 'my' %} bg-[#9A3F3F] {% else %}bg-[#C1856D] border border-[#9A3F3F]{% endif %} px-4 py-2 rounded-xl font-medium transition-colors hover:bg-[#9A3F3F] ">
           My Product
         </a>
-        <a href="?filter=featured" class="{% if request.GET.filter == 'featured' %} bg-indigo-100 text-indigo-400{% else %}bg-indigo-400 text-indigo-100 border border-gray-300{% endif %} px-4 py-2 rounded-xl font-medium transition-colors hover:bg-indigo-100 hover:text-indigo-400">
+        <a href="?filter=featured" class="{% if request.GET.filter == 'featured' %} bg-[#9A3F3F] {% else %}bg-[#C1856D] border border-[#9A3F3F]{% endif %} px-4 py-2 rounded-xl font-medium transition-colors hover:bg-[#9A3F3F] ">
           Featured
         </a>
       </div>
       {% if user.is_authenticated %}
-        <div class="text-sm text-gray-500">
+        <div class="text-sm text-[#9A3F3F] font-bold">
           Last login: {{ last_login }}
         </div>
       {% endif %}
@@ -38,17 +37,20 @@
 
     <!-- Product Grid -->
     {% if not product_list %}
-      <div class="bg-indigo-400 rounded-lg border border-gray-800 p-12 text-center">
+      <div class="bg-[#E6CFA9] rounded-xl border border-[#9A3F3F] p-12 text-center text-[#FBF9D1]">
         <div class="w-32 h-32 mx-auto mb-2">
-          <img src="{% static 'image/product.png' %}" alt="No product available" class="w-full h-full object-contain rounded-xl">
+          <img src="{% static 'image/product.png' %}" alt="No product available" class="w-full h-full object-contain rounded-xl border-[#9A3F3F] border">
         </div>
-        <h3 class="text-lg font-medium text-gray-900 mb-2">No product found</h3>
-        <a href="{% url 'main:add_product' %}" class="inline-flex items-center px-4 py-2 bg-indigo-100 text-gray-800 rounded-xl">
-          Create Product
+        <h3 class="text-lg font-medium text-[#9A3F3F] font-bold mb-2">No product found</h3>
+        <a href="{% url 'main:add_product' %}" class="inline-flex items-center px-4 py-2 bg-[#C1856D] rounded-xl mx-2 hover:bg-[#9A3F3F]">
+          Add Product
+        </a>
+        <a href="{% url 'main:add_product' %}" class="inline-flex items-center px-4 py-2 bg-[#C1856D] rounded-xl mx-2 hover:bg-[#9A3F3F]">
+          Add Instant
         </a>
       </div>
     {% else %}
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
         {% for product in product_list %}
           {% include 'product_card.html' with product=product %}
         {% endfor %}

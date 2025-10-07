@@ -5,12 +5,12 @@
 {% endblock meta %}
 
 {% block content %}
-<div class="bg-gradient-to-b from-indigo-800 to-black w-full min-h-screen flex items-center justify-center p-8">
+<div class="from-[#FBF9D1] via-[#FBF9D1] to-[#9A3F3F] w-full pt-16 min-h-screen bg-gradient-to-b flex items-center justify-center">
   <div class="max-w-md w-full">
-    <div class="bg-indigo-100 rounded-xl border border-indigo-600 p-6 sm:p-8 form-style">
+    <div class="bg-[#E6CFA9] rounded-xl border border-[#9A3F3F] p-6 sm:p-8 form-style">
       <div class="text-center mb-8">
-        <h1 class="text-2xl font-bold text-gray-900 mb-2">Sign In</h1>
-        <p class="text-gray-600">Explore Ozon World</p>
+        <h1 class="text-2xl font-bold text-[#9A3F3F] mb-2">Sign In</h1>
+        <p class="text-gray-800">Explore Ozon World</p>
       </div>
 
       <!-- Form Errors Display -->
@@ -65,7 +65,7 @@
 
         <button 
           type="submit" 
-          class="w-full bg-indigo-400 text-white font-medium py-3 px-4 rounded-xl hover:bg-indigo-600 transition-colors">
+          class="w-full hover:bg-[#9A3F3F] text-[#FBF9D1] font-medium py-3 px-4 rounded-xl bg-[#C1856D] transition-colors">
           Sign In
         </button>
       </form>
@@ -91,10 +91,10 @@
         </div>
       {% endif %}
 
-      <div class="mt-6 text-center pt-6 border-t border-gray-200">
-        <p class="text-gray-500 text-sm">
+      <div class="mt-6 text-center pt-6 border-t border-[#9A3F3F]">
+        <p class="text-gray-800 text-sm">
           Don't have an account? 
-          <a href="{% url 'main:register' %}" class="text-indigo-400 hover:text-indigo-600 font-medium">
+          <a href="{% url 'main:register' %}" class="text-[#9A3F3F] hover:text-[#C1856D] font-bold">
             Register Now
           </a>
         </p>

@@ -1,25 +1,27 @@
 {% load static %}
-<article class="bg-indigo-100 rounded-xl border border-indigo-400 hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+<article class="bg-[#E6CFA9] rounded-xl border-2 border-[#9A3F3F] hover:shadow-2xl transition-shadow duration-300 overflow-hidden w-[250px] h-[400px]">
   <!-- Thumbnail -->
-  <div class="aspect-[16/9] relative overflow-hidden">
-    {% if product.thumbnail %}
-      <img src="{{ product.thumbnail }}" alt="{{ product.title }}" class="w-full h-full object-contain">
-    {% else %}
-      <img src="{% static 'image/shape.png' %}">
-    {% endif %}
-
+  <div class="aspect-[1/1] relative items-center overflow-hidden">
+    <a href="{% url 'main:show_product' product.id %}">
+      {% if product.thumbnail %}
+      <img src="{{ product.thumbnail }}" alt="{{ product.title }} "class="w-full h-full object-cover">
+      {% else %}
+      <img src="{% static 'image/shape.png' %}"class="w-full h-full object-cover">
+      {% endif %}
+    </a>
+      
     <!-- Category Badge -->
-    <div class="absolute bottom-0 left-3">
-      <span class="inline-flex items-center px-2.5 py-0.5 rounded-xl text-xs font-medium bg-indigo-400 text-indigo-100">
+    <div class="absolute bottom-3 left-5">
+      <span class="inline-flex items-center px-2 py-1 rounded-xl text-xs font-medium bg-[#9A3F3F] text-[#E6CFA9]">
         {{ product.get_category_display }}
       </span>
     </div>
 
     <!-- Status Badges -->
-    <div class="absolute bottom-6 left-3 flex space-x-2">
+    <div class="absolute bottom-3 right-5">
       {% if product.is_featured %}
-        <span class="inline-flex items-center px-2 py-1 rounded-xl text-xs font-medium bg-green-600 text-indigo-100">
-          Recommended
+        <span class="inline-flex items-center px-2 py-1 rounded-xl text-xs font-medium bg-green-600 text-[#E6CFA9]">
+          ★
         </span>
       {% endif %}
     </div>
@@ -27,21 +29,20 @@
 
   <!-- Content -->
   <div class="p-5">
-    <div class="flex items-center text-sm text-indigo-400 mb-3">
-      <span class="mx-0">Rp.</span>
-      <span>{{ product.price }} </span>
+    <div class="flex items-center text-sm text-[#9A3F3F] mb-3">
+      <span class="mx-0 font-bold">Rp. {{ product.price }}</span>
     </div>
 
-    <h3 class="text-lg font-semibold text-gray-900 mb-3 line-clamp-2 leading-tight">
-      <a href="{% url 'main:show_product' product.id %}" class="hover:text-indigo-400 transition-colors">
+    <h3 class="text-lg font-semibold text-gray-900 mb-3 line-clamp-1 leading-tight product_name">
+      <a href="{% url 'main:show_product' product.id %}" class="hover:text-[#9A3F3F] transition-colors">
         {{ product.name }}
       </a>
     </h3>
 
     <!-- Action Buttons -->
     {% if user.is_authenticated and product.user == user %}
-      <div class="flex items-center justify-between pt-4 border-t border-indigo-400">
-        <a href="{% url 'main:show_product' product.id %}" class="text-gray-900 hover:text-indigo-400 font-medium text-sm transition-colors">
+      <div class="flex items-center justify-between pt-4 border-t border-[#9A3F3F]">
+        <a href="{% url 'main:show_product' product.id %}" class="text-gray-900 hover:text-[#9A3F3F] font-medium text-sm transition-colors">
           Detail
         </a>
         <div class="flex space-x-2">
@@ -54,11 +55,13 @@
         </div>
       </div>
     {% else %}
-      <div class="pt-4 border-t border-indigo-400">
-        <a href="{% url 'main:show_product' product.id %}" class="text-gray-900 hover:text-indigo-400 font-medium text-sm transition-colors">
+      <div class="pt-4 border-t border-[#9A3F3F]">
+        <a href="{% url 'main:show_product' product.id %}" class="text-gray-900 hover:text-[#9A3F3F] font-medium text-sm transition-colors">
           Detail
         </a>
       </div>
     {% endif %}
+
+    
   </div>
 </article>
