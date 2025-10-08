@@ -1,5 +1,5 @@
 {% load static %}
-<nav class="fixed top-0 left-0 w-full bg-[#FBF9D1] border-b border-[#E6CFA9] z-50">
+<nav class="fixed top-0 left-0 w-full bg-[#FBF9D1] border-b-4 border-[#9A3F3F] z-50 backdrop-filter backdrop-blur-lg bg-opacity-50">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="flex items-center justify-between h-24">
         <div class="flex items-center">
@@ -8,13 +8,13 @@
         
         <!-- Desktop Navigation -->
         <div class="hidden md:flex items-center space-x-16">
-          <a href="/" class="text-[#9A3F3F] hover:bg-[#E6CFA9] font-bold transition-colors p-2 rounded-xl">
+          <a href="/" class="text-[#C1856D] hover:text-[#9A3F3F] font-bold transition-colors p-2 rounded-xl">
             Home
           </a>
-          <a href="{% url 'main:show_catalogue' %}" class="text-[#9A3F3F] hover:bg-[#E6CFA9] font-bold transition-colors p-2 rounded-xl">
+          <a href="{% url 'main:show_catalogue' %}" class="text-[#C1856D] hover:text-[#9A3F3F] font-bold transition-colors p-2 rounded-xl">
             Catalogue
           </a>
-          <a href="{% url 'main:add_product' %}" class="text-[#9A3F3F] hover:bg-[#E6CFA9] font-bold transition-colors p-2 rounded-xl">
+          <a href="{% url 'main:add_product' %}" class="text-[#C1856D] hover:text-[#9A3F3F] font-bold transition-colors p-2 rounded-xl">
             Add Product
           </a>
         </div>

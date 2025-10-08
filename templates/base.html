@@ -11,8 +11,11 @@
 </head>
 
 <body>
-    {% block content %} 
+    {% block content %} {% endblock content %}
+    <footer id="about" class="text-center bg-gray-800 text-gray-50 py-4 text-sm">
+        Ozon Sportswear &copy; 2025. All rights reserved.
+    </footer>
     {% include 'toast.html' %}
-    {% endblock content %}
+    {%include 'modal.html' %}
 </body>
 </html>

@@ -242,3 +242,27 @@ Lalu saya buat 2 akun dan masing-masing akun melakukan 3 kali add product
  Lalu kita mengkustomisasi desain web kita dengan senang hati.
  Saya mengincar kombinasi warna indigo dan abu gelap sebagai warna dasar
  
+ /// TUGAS 6 ///
+Apa perbedaan antara synchronous request dan asynchronous request?
+Request Sync bekerja dengan menunggu respons dalam server dan pihak client perlu merequest ulang halaman
+agar update dapat dilihat
+Request Async bekerja dengan melakukan request dibelakang sementara client tidak perlu menunggu mendapati respons
+respons akan diperbarui tanpa perlu merefresh halaman sehingga terasa lebih nyaman
+
+Bagaimana AJAX bekerja di Django (alur request–response)?
+- Terdapat request untuk javasript untuk mengolah suatu data
+- Pada tahap tertentu data akan diupdate dibelakang layar dengan meminta views mengolah melalui url
+- Views mengembalikkan respons bisa JSONresponse atau Httpresponse 
+- JavaScript menangkap respons dan memperbarui UI
+
+Apa keuntungan menggunakan AJAX dibandingkan render biasa di Django?
+Responsif, Cepat, Nyaman digunakan
+
+Bagaimana cara memastikan keamanan saat menggunakan AJAX untuk fitur Login dan Register di Django?
+kita dapat menggunakan cookies untuk mengambil csfr_token selain itu dapat membersihkan isi form dari string html
+menghindari xss attack
+
+Bagaimana AJAX mempengaruhi pengalaman pengguna (User Experience) pada website?
+Karena lebih responsif dan tidak perlu berpindah page, penggunaan AJAX Terasa lebih nyaman dan normal bagi user
+
+ /// END TUGAS 6 ///
